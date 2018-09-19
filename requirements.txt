@@ -1,0 +1,9 @@
+certifi==2018.8.24
+chardet==3.0.4
+heroku==0.1.4
+idna==2.7
+psycopg2==2.7.5
+python-dateutil==1.5
+requests==2.19.1
+SQLAlchemy==1.2.11
+urllib3==1.23
