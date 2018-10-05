@@ -40,11 +40,7 @@ if __name__=="__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-<<<<<<< HEAD
     result_list = ['Tracking', 'Lost', 'Inactive', 'Lead', 'TrackAlert','Recapture', 'Left Industry', 'Engaged']
-=======
-    result_list = ['Tracking', 'Lost', 'Inactive', 'Lead', 'TrackAlert', 'Recapture', 'Left Industry']
->>>>>>> 8abb8e49768a826f0ead56fa3755936ad427c056
     for r in result_list:
         results = session.query(Leaver).filter_by(result=r).all()
         count = len(results)
