@@ -40,10 +40,11 @@ if __name__=="__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    result_list = ['Tracking', 'Lost', 'Inactive', 'Lead', 'TrackAlert','Recapture', 'Left Industry']
+    result_list = ['Tracking', 'Lost', 'Inactive', 'Lead', 'TrackAlert','Recapture', 'Left Industry', 'Engaged']
     for r in result_list:
         results = session.query(Leaver).filter_by(result=r).all()
         count = len(results)
+        print('Bucket %s has %s members' %(r, count))
         b = Buckets(status=r, count=count, date=datetime.datetime.now(datetime.timezone.utc))
         session.add(b)
 
@@ -51,6 +52,7 @@ if __name__=="__main__":
     for i in result_list1:
         results1 = session.query(Leaver).filter_by(inprosshell=i).all()
         count1 = len(results1)
+        print('Bucket %s has %s members' %(i, count1))
         l = LJFT(status=i, count=count1, date=datetime.datetime.now(datetime.timezone.utc))
         session.add(l)
 
