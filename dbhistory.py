@@ -39,7 +39,7 @@ if __name__=="__main__":
     LJFT = Base.classes.LJFT
     Session = sessionmaker(bind=engine)
     session = Session()
-
+    print('>>>>>>>>>Counting Buckets')
     result_list = ['Tracking', 'Lost', 'Inactive', 'Lead', 'TrackAlert','Recapture', 'Left Industry', 'Engaged']
     for r in result_list:
         results = session.query(Leaver).filter_by(result=r).all()
@@ -47,6 +47,7 @@ if __name__=="__main__":
         print('Bucket %s has %s members' %(r, count))
         b = Buckets(status=r, count=count, date=datetime.datetime.now(datetime.timezone.utc))
         session.add(b)
+        print('count', b.count)
 
     result_list1 = ['Yes', 'No']
     for i in result_list1:
